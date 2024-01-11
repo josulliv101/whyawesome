@@ -28,6 +28,7 @@ export function Header() {
         <nav className="flex items-center gap-6 text-sm">
           {navItems.map(({ label, path }) => (
             <Link
+              key={path}
               href={path}
               className={cn(
                 "transition-colors hover:text-foreground/80",
