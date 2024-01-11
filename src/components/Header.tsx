@@ -19,12 +19,12 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/90">
       <div className="container flex h-14 max-w-screen-3xl items-center justify-between">
-        <div className="flex items-center space-x-4">
-          <div className="flex items-center justify-center w-8 h-8 rounded-sm bg-brand text-brand-foreground">
+        <Link href="/" className="flex items-center">
+          <div className="flex items-center justify-center w-8 h-8 rounded-sm bg-brand text-brand-foreground mr-4">
             <Sparkle />
           </div>
-          <Link href="/">why awesome</Link>
-        </div>
+          why awesome
+        </Link>
         <nav className="flex items-center gap-6 text-sm">
           {navItems.map(({ label, path }) => (
             <Link

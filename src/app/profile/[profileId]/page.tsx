@@ -23,5 +23,5 @@ export async function generateMetadata(
 }
 
 export default function Profile({ params: { profileId } }: Props) {
-  return <Page>{"profile id / " + profileId}</Page>;
+  return <Page showSidebar={false}>{"profile id / " + profileId}</Page>;
 }
