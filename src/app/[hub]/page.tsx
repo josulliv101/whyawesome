@@ -1,3 +1,4 @@
+import { Page } from "@/components/Page";
 import Image from "next/image";
 
 interface Props {
@@ -5,5 +6,5 @@ interface Props {
 }
 
 export default function Hub({ params: { hub } }: Props) {
-  return "hub / " + hub;
+  return <Page>{"hub / " + hub}</Page>;
 }

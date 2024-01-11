@@ -1,3 +1,4 @@
+import { Page } from "@/components/Page";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 
@@ -22,5 +23,5 @@ export async function generateMetadata(
 }
 
 export default function Profile({ params: { profileId } }: Props) {
-  return "profile id / " + profileId;
+  return <Page>{"profile id / " + profileId}</Page>;
 }

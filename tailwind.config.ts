@@ -18,6 +18,9 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        hero: "url('/landscape003.jpg')",
+        "hero-overlay":
+          "linear-gradient(180deg,rgba(66,153,225, .65),hsla(0,0%,48%,0.10))",
       },
       borderRadius: {
         lg: "var(--radius)",
