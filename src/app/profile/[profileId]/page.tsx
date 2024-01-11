@@ -9,22 +9,15 @@ export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  // read route params
   const { profileId } = params;
-
-  // fetch data
   const profile = await fetch(
-    `https://firestore.googleapis.com/v1/projects/fir-abc-a965d/databases/(default)/documents/entity/${profileId}`
+    `https://firestore.googleapis.com/v1/projects/${process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID}/databases/(default)/documents/entity/${profileId}`
   ).then((res) => res.json());
 
-  // optionally access and extend (rather than replace) parent metadata
-  const previousImages = (await parent).openGraph?.images || [];
-  console.log("profile", profile);
+  const previousTitle = (await parent).title;
+  console.log("previousTitle", previousTitle);
   return {
-    title: `${profile.fields.name.stringValue} / why awesome`,
-    // openGraph: {
-    //   images: ["/some-specific-page-image.jpg", ...previousImages],
-    // },
+    title: `${profile.fields.name.stringValue} / ${previousTitle?.absolute}`,
   };
 }
 
