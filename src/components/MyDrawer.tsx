@@ -1,15 +1,27 @@
 "use client";
 
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { usePathname, useRouter } from "next/navigation";
+import { PropsWithChildren } from "react";
 import { Drawer } from "vaul";
 
-export function MyDrawer({ open }: { open: boolean }) {
+export function MyDrawer({
+  children,
+  open,
+  profileId,
+}: PropsWithChildren<{ open: boolean; profileId?: string }>) {
   const router = useRouter();
   const path = usePathname();
   const handleClose = (open: boolean) => {
     console.log("close");
     !open && router.push(path);
   };
+  const isDesktop = useMediaQuery("(min-width: 660px)");
+
+  if (isDesktop) {
+    // return null;
+  }
+
   return (
     <Drawer.Root
       open={open}
@@ -24,30 +36,10 @@ export function MyDrawer({ open }: { open: boolean }) {
             <div className="mx-auto w-12 h-1.5 flex-shrink-0 rounded-full bg-zinc-300 mb-8" />
             <div className="max-w-md mx-auto">
               <Drawer.Title className="font-medium mb-4">
-                Unstyled drawer for React.
+                {profileId} profile
               </Drawer.Title>
-              <p className="text-zinc-600 mb-2">
-                This component can be used as a replacement for a Dialog on
-                mobile and tablet devices.
-              </p>
-              <p className="text-zinc-600 mb-8">
-                It uses{" "}
-                <a
-                  href="https://www.radix-ui.com/docs/primitives/components/dialog"
-                  className="underline"
-                  target="_blank"
-                >
-                  Radix&apos;s Dialog primitive
-                </a>{" "}
-                under the hood and is inspired by{" "}
-                <a
-                  href="https://twitter.com/devongovett/status/1674470185783402496"
-                  className="underline"
-                  target="_blank"
-                >
-                  this tweet.
-                </a>
-              </p>
+              <div>foobar</div>
+              {children}
             </div>
           </div>
           <div className="p-4 bg-zinc-100 border-t border-zinc-200 mt-auto">

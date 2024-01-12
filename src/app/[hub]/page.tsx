@@ -1,16 +1,4 @@
-import { MyDrawer } from "@/components/MyDrawer";
 import { Page } from "@/components/Page";
-import { Button } from "@/components/ui/button";
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer";
 import Link from "next/link";
 
 interface Props {
@@ -24,12 +12,17 @@ export default function Hub({
 }: Props) {
   return (
     <>
-      <Page>
-        {"hub / " + hub} / {profile}
-        <Link href="/boston?profile=larry-bird">Drawer Larry Bird</Link>
+      <Page profileId={profile}>
+        {!!profile && (
+          <div className=" bg-gray-100 rounded-sm min-h-[360px]">{profile}</div>
+        )}
+        {!profile && (
+          <div>
+            {"hub / " + hub} / {profile}
+            <Link href="?profile=larry-bird">Drawer Larry Bird</Link>
+          </div>
+        )}
       </Page>
-
-      <MyDrawer open={!!profile} />
     </>
   );
 }

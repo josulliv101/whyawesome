@@ -5,6 +5,7 @@ import Link from "next/link";
 
 interface Props {
   params: { tags: string[] };
+  searchParams: { profile: string };
 }
 
 export async function generateMetadata(
@@ -19,14 +20,17 @@ export async function generateMetadata(
   };
 }
 
-export default function Tags({ params: { tags } }: Props) {
+export default function Tags({
+  params: { tags },
+  searchParams: { profile },
+}: Props) {
   return (
-    <Page>
+    <Page profileId={profile}>
       <div>
         <div>{"tags / " + tags.join(" & ")}</div>
         <div>
-          <Link href="/profile/larry-bird">Profile Larry Bird</Link> |
-          <Link href="/boston?profile=larry-bird">Drawer Larry Bird</Link>
+          <Link href="?profile=kevin-garnett">Drawer Kevin Garnett</Link> |
+          <Link href="?profile=larry-bird">Drawer Larry Bird</Link>
         </div>
       </div>
     </Page>

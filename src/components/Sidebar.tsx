@@ -39,15 +39,15 @@ export function Sidebar({
           <div className="space-y-1">
             {[
               { label: "All", path: "/", id: "all" },
-              { label: "Boston", path: "/explore2/boston", id: "boston" },
+              { label: "Boston", path: "/boston", id: "boston" },
               {
                 label: "New York City",
-                path: "/explore2/new-york-city",
+                path: "/new-york-city",
                 id: "new-york-city",
               },
               {
                 label: "Chicago",
-                path: "/explore2/chicago",
+                path: "/chicago",
                 id: "chicago",
               },
             ].map(({ label, id, path }) => (
@@ -74,7 +74,7 @@ export function Sidebar({
                         className="w-full justify-start"
                         asChild
                       >
-                        <Link href={`/explore2/${params.hub}/${item.id}`}>
+                        <Link href={`/${params.hub}/${item.id}`}>
                           <ChevronRight className="relative mr-2 left-[0px] h-[.85rem] w-[.85rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
                           {item.label}
                         </Link>
