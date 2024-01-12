@@ -85,6 +85,8 @@ export async function Page({
                         id="modal-title"
                       >
                         Deactivate account
+                        <br />
+                        {profileData?.fields?.name?.stringValue}
                       </h3>
                       <div className="mt-2">
                         <p className="text-sm text-gray-500">

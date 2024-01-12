@@ -6,13 +6,20 @@ interface Props {
   searchParams: { profile: string };
 }
 
-export default function Hub({
+export default async function Hub({
   params: { hub },
   searchParams: { profile },
 }: Props) {
+  let profileData;
+
+  if (profile) {
+    profileData = await fetch(
+      `https://firestore.googleapis.com/v1/projects/${process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID}/databases/(default)/documents/entity/${profile}`
+    ).then((res) => res.json());
+  }
   return (
     <>
-      <Page profileId={profile}>
+      <Page profileId={profile} profileData={profileData}>
         {!!profile && (
           <div className=" bg-gray-100 rounded-sm min-h-[360px]">{profile}</div>
         )}

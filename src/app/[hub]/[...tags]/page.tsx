@@ -20,12 +20,19 @@ export async function generateMetadata(
   };
 }
 
-export default function Tags({
+export default async function Tags({
   params: { tags },
   searchParams: { profile },
 }: Props) {
+  let profileData;
+
+  if (profile) {
+    profileData = await fetch(
+      `https://firestore.googleapis.com/v1/projects/${process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID}/databases/(default)/documents/entity/${profile}`
+    ).then((res) => res.json());
+  }
   return (
-    <Page profileId={profile}>
+    <Page profileId={profile} profileData={profileData}>
       <div>
         <div>{"tags / " + tags.join(" & ")}</div>
         <div>
