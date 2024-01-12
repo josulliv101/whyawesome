@@ -17,7 +17,7 @@ const navItems = [
 export function Header() {
   const pathname = usePathname();
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/90">
+    <header className="sticky top-0 z-10 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/90">
       <div className="container flex h-14 max-w-screen-3xl items-center justify-between">
         <Link href="/" className="flex items-center">
           <div className="flex items-center justify-center w-8 h-8 rounded-sm bg-brand text-brand-foreground mr-4">

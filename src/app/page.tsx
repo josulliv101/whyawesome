@@ -48,7 +48,7 @@ export default async function Home({ searchParams: { profile } }: Props) {
         </div>
 
         <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-          <Link href="?profile=michael-jordan">
+          <Link href="?profile=michael-jordan" scroll={false}>
             <h2 className={`mb-3 text-2xl font-semibold`}>
               Docs{" "}
               <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
