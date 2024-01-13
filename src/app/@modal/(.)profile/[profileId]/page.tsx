@@ -1,9 +1,16 @@
+import { db } from "@/lib/firebase";
 import { Modal } from "./Modal";
 
-export default function ProfileModal({
+export default async function ProfileModal({
   params: { profileId },
 }: {
   params: { profileId: string };
 }) {
-  return <Modal>{profileId}</Modal>;
+  const data = (await db.collection("entity").doc(profileId).get()).data();
+
+  return (
+    <Modal>
+      {profileId} / {data?.name}
+    </Modal>
+  );
 }
