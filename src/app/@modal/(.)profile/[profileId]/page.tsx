@@ -1,5 +1,5 @@
 import { db } from "@/lib/firebase";
-import { Modal } from "./Modal";
+import ResponsiveModal from "./ResponsiveModal";
 
 export default async function ProfileModal({
   params: { profileId },
@@ -9,8 +9,8 @@ export default async function ProfileModal({
   const data = (await db.collection("entity").doc(profileId).get()).data();
 
   return (
-    <Modal>
+    <ResponsiveModal>
       {profileId} / {data?.name}
-    </Modal>
+    </ResponsiveModal>
   );
 }
