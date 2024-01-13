@@ -4,7 +4,13 @@ import { type ElementRef, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { createPortal } from "react-dom";
 
-export function Modal({ children }: { children: React.ReactNode }) {
+export function Modal({
+  children,
+  name,
+}: {
+  children?: React.ReactNode;
+  name: string;
+}) {
   const router = useRouter();
   const dialogRef = useRef<ElementRef<"dialog">>(null);
 
@@ -55,7 +61,7 @@ export function Modal({ children }: { children: React.ReactNode }) {
                     className="text-base font-semibold leading-6 text-gray-900"
                     id="modal-title"
                   >
-                    Deactivate account
+                    {name}
                   </h3>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">{children}</p>

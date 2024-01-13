@@ -23,7 +23,7 @@ export default function RootLayout({
     tags?: string;
   };
 }) {
-  // const { hub } = params;
+  const { hub } = params;
   console.log("root layout ::params", params);
   return (
     <html lang="en">
@@ -34,7 +34,7 @@ export default function RootLayout({
         )} */}
         <div className="bg-background w-full">
           <div className={`grid lg:grid-cols-5 gap-8`}>
-            {/* <Sidebar hub={hub} className="hidden lg:block lg:col-span-1" /> */}
+            <Sidebar hub={hub} className="hidden lg:block lg:col-span-1" />
             <div className="lg:col-span-4">
               <div className="bg-gray-100 h-12"></div>
               {children}

@@ -5,16 +5,16 @@ import { Modal } from "./Modal";
 import { MyDrawer } from "@/components/MyDrawer";
 import { PropsWithChildren } from "react";
 
-export default function ResponsiveModal({
-  children,
-}: // params: { profileId },
-PropsWithChildren<{
-  // params: { profileId: string };
-}>) {
-  const isDesktop = useMediaQuery("(min-width: 660px)");
+export default function ResponsiveModal(
+  props: // params: { profileId },
+  PropsWithChildren<{
+    name: string;
+  }>
+) {
+  const isDesktop = useMediaQuery("(min-width: 780px)");
 
   if (isDesktop) {
-    return <Modal>{children}</Modal>;
+    return <Modal {...props} />;
   }
-  return <MyDrawer open>{children}</MyDrawer>;
+  return <MyDrawer open {...props} />;
 }

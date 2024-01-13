@@ -9,7 +9,7 @@ export default async function ProfileModal({
   const data = (await db.collection("entity").doc(profileId).get()).data();
 
   return (
-    <ResponsiveModal>
+    <ResponsiveModal name={data?.name}>
       {profileId} / {data?.name}
     </ResponsiveModal>
   );

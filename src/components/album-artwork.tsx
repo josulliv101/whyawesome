@@ -53,7 +53,7 @@ export function AlbumArtwork({
             @{album.id}
           </Link>
         </h3>
-        <div className="relative text-md text-muted-foreground bg-muted px-3 pt-2 pb-2 h-[168px] overflow-hidden">
+        <div className="relative text-md text-muted-foreground bg-muted px-3 pt-2 pb-2 h-[168px] overflow-hidden whitespace-normal">
           <div className="flex items-center justify-between font-medium mb-2">
             <div className="opacity-0">
               <em>top reason</em>
