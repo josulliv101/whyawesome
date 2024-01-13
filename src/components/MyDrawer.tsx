@@ -14,7 +14,7 @@ export function MyDrawer({
   const path = usePathname();
   const handleClose = (open: boolean) => {
     console.log("close");
-    !open && router.push(path);
+    !open && router.back();
   };
   const isDesktop = useMediaQuery("(min-width: 660px)");
 
