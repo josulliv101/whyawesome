@@ -35,15 +35,7 @@ export async function Page({
         className
       )}
     >
-      <div className="bg-background w-full">
-        <div className={`grid ${columnsClass} gap-8`}>
-          {showSidebar && <Sidebar className="hidden lg:block lg:col-span-1" />}
-          <div className={`${columnsSpanClass}`}>
-            <div className="bg-gray-100 h-12"></div>
-            {children}
-          </div>
-        </div>
-      </div>
+      {children}
       <footer>my footer</footer>
       {profileId && (
         <div

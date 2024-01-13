@@ -1,4 +1,5 @@
 import { Metadata, ResolvingMetadata } from "next";
+import { PropsWithChildren } from "react";
 
 interface Props {
   params: { hub: string };
@@ -15,6 +16,10 @@ export async function generateMetadata(
     title: `${hub} / ${previousTitle?.absolute}`,
   };
 }
-export default function HubLayout({ children }: { children: React.ReactNode }) {
+export default function HubLayout({
+  children,
+  params,
+}: PropsWithChildren<Props>) {
+  console.log("layout :: params", params);
   return <>{children}</>;
 }

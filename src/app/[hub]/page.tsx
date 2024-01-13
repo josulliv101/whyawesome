@@ -17,6 +17,8 @@ export default async function Hub({
       `https://firestore.googleapis.com/v1/projects/${process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID}/databases/(default)/documents/entity/${profile}`
     ).then((res) => res.json());
   }
+
+  console.log("page :: hub", hub);
   return (
     <>
       <Page profileId={profile} profileData={profileData}>
