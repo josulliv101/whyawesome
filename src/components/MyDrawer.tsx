@@ -1,6 +1,7 @@
 "use client";
 
 import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { Profile } from "@/types";
 import { usePathname, useRouter } from "next/navigation";
 import { PropsWithChildren } from "react";
 import { Drawer } from "vaul";
@@ -9,7 +10,8 @@ export function MyDrawer({
   children,
   open,
   profileId,
-}: PropsWithChildren<{ open: boolean; profileId?: string }>) {
+  profile,
+}: PropsWithChildren<{ open: boolean; profileId?: string; profile: Profile }>) {
   const router = useRouter();
   const path = usePathname();
   const handleClose = (open: boolean) => {
@@ -34,13 +36,7 @@ export function MyDrawer({
         <Drawer.Content className="bg-zinc-100 flex flex-col rounded-t-[10px] h-[86%] mt-24 fixed bottom-0 left-0 right-0">
           <div className="p-4 bg-white rounded-t-[10px] flex-1">
             <div className="mx-auto w-12 h-1.5 flex-shrink-0 rounded-full bg-zinc-300 mb-8" />
-            <div className="max-w-md mx-auto">
-              <Drawer.Title className="font-medium mb-4">
-                {profileId} profile
-              </Drawer.Title>
-              <div>foobar</div>
-              {children}
-            </div>
+            <div className="max-w-full mx-auto">{children}</div>
           </div>
           <div className="p-4 bg-zinc-100 border-t border-zinc-200 mt-auto">
             <div className="flex gap-6 justify-end max-w-md mx-auto">

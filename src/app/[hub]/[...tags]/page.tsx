@@ -5,10 +5,14 @@ import Image from "next/image";
 import Link from "next/link";
 
 interface Props {
-  params: { hub: string };
+  params: { hub: string; tags: string[] };
   // searchParams: { profile: string };
 }
 
-export default async function Hub({ params: { hub } }: Props) {
-  return <div className="col-span-3 lg:col-span-4 lg:border-l">HUB {hub}</div>;
+export default async function Tags({ params: { hub, tags } }: Props) {
+  return (
+    <div className="col-span-3 lg:col-span-4 lg:border-l">
+      HUB {hub} / {tags.join(" / ")}
+    </div>
+  );
 }

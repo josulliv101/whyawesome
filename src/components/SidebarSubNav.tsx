@@ -18,7 +18,7 @@ const SubNavList = memo(function List({
   hub,
   activeHub,
 }: PropsWithChildren<{ firstTag?: string; activeHub: string; hub: string }>) {
-  console.log("SubNavList render()");
+  console.log("SubNavList render() activeHub", activeHub);
   if (activeHub !== hub) {
     return null;
   }
