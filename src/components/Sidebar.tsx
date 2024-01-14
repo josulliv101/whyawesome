@@ -50,7 +50,6 @@ export function Sidebar({ className, hub }: SidebarProps) {
                 >
                   <Link href={path}>{label}</Link>
                 </Button>
-                <SidebarSubNav hub={id} />
               </Fragment>
             ))}
           </div>
