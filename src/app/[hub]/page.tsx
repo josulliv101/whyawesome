@@ -1,6 +1,7 @@
 import { Page } from "@/components/Page";
 import { ProfileHScroll } from "@/components/ProfileHScroll";
 import { Albums } from "@/components/albums";
+import { Badge } from "@/components/ui/badge";
 import { db, fetchEntities } from "@/lib/firebase";
 import Image from "next/image";
 import Link from "next/link";
@@ -24,7 +25,8 @@ export default async function Hub({ params: { hub } }: Props) {
     <div className="col-span-3 lg:col-span-4 lg:border-l">
       <div className="sm:px-0 md:px-12 pt-6">
         <h2 className="text-3xl font-semibold tracking-tight mb-8">
-          Find out why things are awesome. {hub}
+          Find out why things in <Badge className="text-lg px-4">{hub}</Badge>{" "}
+          are awesome.
         </h2>
       </div>
       <ProfileHScroll

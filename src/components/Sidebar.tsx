@@ -31,7 +31,7 @@ export function Sidebar({ className, hub }: SidebarProps) {
   // const params = useParams();
   console.log("Sidebar render()");
   return (
-    <div className={cn("pb-12", className)}>
+    <div className={cn("pb-12 mt-4", className)}>
       <div className="space-y-4">
         <div className="py-2">
           <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">

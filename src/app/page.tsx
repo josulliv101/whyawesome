@@ -28,11 +28,6 @@ export default async function Home({}: Props) {
   // }
   return (
     <div className="col-span-3 lg:col-span-4 lg:border-l">
-      <div className="sm:px-0 md:px-12 pt-6">
-        <h2 className="text-3xl font-semibold tracking-tight mb-8">
-          Find out why things are awesome.
-        </h2>
-      </div>
       <ProfileHScroll
         path="/person"
         title="People"

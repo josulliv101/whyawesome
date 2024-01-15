@@ -62,10 +62,10 @@ export function AlbumArtwork({
               <div className="opacity-0">
                 <em>top reason</em>
               </div>
-              <Badge className="absolute top-2 right-4 bg-orange-500">
-                top reason{" "}
-                <Star className="relative ml-2 left-[-3px] text-white h-[.85rem] w-[.85rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                {album.oinks}
+              <Badge className="absolute top-2 right-4 bg-brand">
+                {/* top reason{" "} */}
+                <Star className="relative mr-1 left-[-1px] text-white h-[.85rem] w-[.85rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                {album.oinks} votes
               </Badge>
             </div>
             {/* <span className="relative inline-block top-[3px] -left-px mr-px">

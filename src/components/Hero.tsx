@@ -8,7 +8,7 @@ export function Hero() {
 
   if (pathname === "/") {
     return (
-      <div className="w-full bg-hero min-h-[360px] bg-bottom bg-no-repeat bg-cover" />
+      <div className="w-full bg-hero min-h-[460px] bg-center bg-no-repeat bg-cover" />
     );
   }
   return null;
