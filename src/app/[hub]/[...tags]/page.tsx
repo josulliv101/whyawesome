@@ -38,23 +38,23 @@ export default async function Hub({
     <div className="col-span-3 lg:col-span-4 lg:border-l p-4">
       HUB {hub} / {tags.join(" / ")} / total {count}
       {items.map((item) => (
-        <Link href={`/profile/${item.id}`} className="">
-          <div className="flex items-center pl-0 pr-4 py-0 my-4 space-x-6 hover:bg-primary/5">
+        <Link key={item.id} href={`/profile/${item.id}`} className="">
+          <div className="flex items-start pl-0 pr-4 py-0 my-4 space-x-6 hover:bg-primary/5">
             <Image
               alt={item.name}
               src={item.pic}
               width={96}
               height={96}
-              className="block w-[96px] h-[96px] p-2 object-cover rounded-sm object-center aspect-square"
+              className="block w-[96px] h-[96px] p-1 object-cover rounded-sm object-center aspect-square"
             />
             <div className="flex-1">
-              <p className="text-sm font-medium leading-none">
+              <p className="text-lg font-medium leading-none mb-2">
                 {item.name} /{" "}
-                <span className="text-sm text-blue-500">@{item.id}</span>
+                <span className="text-md text-blue-500">@{item.id}</span>
               </p>
 
-              <p className="text-sm text-muted-foreground">
-                {item.description}
+              <p className="text-md text-muted-foreground">
+                {item.description?.substring(0, 150)}
               </p>
             </div>
             <Badge className="w-fit whitespace-nowrap">
