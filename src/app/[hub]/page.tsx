@@ -18,32 +18,35 @@ export default async function Hub({ params: { hub } }: Props) {
     fetchEntities([hub, "restaurant"]),
   ];
 
-  const [people, movies, sports, restaurants] = await Promise.all(ps);
+  const [[people], [movies], [sports], [restaurants]] = await Promise.all(ps);
 
   return (
     <div className="col-span-3 lg:col-span-4 lg:border-l">
       <div className="sm:px-0 md:px-12 pt-6">
         <h2 className="text-3xl font-semibold tracking-tight mb-8">
-          Find out why things are awesome.
+          Find out why things are awesome. {hub}
         </h2>
       </div>
       <ProfileHScroll
-        title="People"
+        path={`/${hub}/person`}
+        title={`${hub} > people`}
         description="Find awesome people in arts & entertainment, sports, politics, science, academia, and more."
         profiles={people}
       />
       <ProfileHScroll
-        title="Sports"
+        path={`/${hub}/sports`}
+        title={`${hub} > sports`}
         description="Find awesome sports profiles."
         profiles={sports}
       />
       <ProfileHScroll
-        title="Restaurants"
+        path={`/${hub}/restaurants`}
+        title={`${hub} > restaurants`}
         description="Find awesome restaurants."
         profiles={restaurants}
       />{" "}
       <ProfileHScroll
-        title="Movies"
+        title={`${hub} > movies`}
         description="Find awesome movies."
         profiles={movies}
       />

@@ -1,3 +1,4 @@
+import { Profile } from "@/types";
 import admin from "firebase-admin";
 
 const serviceAccount = JSON.parse(
@@ -20,20 +21,44 @@ export const getFirebaseAdminApp = () => {
 
 export const db = admin.firestore(getFirebaseAdminApp());
 
-export async function fetchEntities(tags: Array<string> = []) {
+export async function fetchEntities(
+  tags: Array<string> = [],
+  limit = 8,
+  startAfter = 0,
+  prev = false
+) {
   let query = db.collection("entity").where("oinks", ">", 0);
 
   tags.forEach((tag) => {
     query = query.where(`tagMap.${tag}`, "==", true);
   });
 
-  const snapshotPeople = await query.orderBy("oinks", "desc").limit(8).get();
+  let snapshotPeople = await query.orderBy("oinks", "desc");
+
+  if (startAfter > 0 && !prev) {
+    snapshotPeople = snapshotPeople.startAfter(startAfter);
+  } else if (startAfter > 0 && !!prev) {
+    snapshotPeople = snapshotPeople.endBefore(startAfter);
+  }
+
+  const snapshotPeople2 = await snapshotPeople.limit(limit).get();
+
+  const lastItem =
+    snapshotPeople2.docs[snapshotPeople2.docs.length - 1]?.get("oinks");
+  const firstItem = snapshotPeople2.docs[0]?.get("oinks");
+
+  const snapshotCount = await query.count().get();
 
   const people: Array<any> = [];
 
-  snapshotPeople.forEach((doc: any) =>
+  snapshotPeople2.forEach((doc: any) =>
     people.push({ id: doc.id, ...doc.data() })
   );
-
-  return people;
+  const data = [people, snapshotCount.data().count, lastItem, firstItem] as [
+    Array<Profile>,
+    number,
+    number,
+    number
+  ];
+  return data;
 }

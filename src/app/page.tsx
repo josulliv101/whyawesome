@@ -18,7 +18,7 @@ export default async function Home({}: Props) {
     fetchEntities(["restaurant"]),
   ];
 
-  const [people, movies, sports, restaurants] = await Promise.all(ps);
+  const [[people], [movies], [sports], [restaurants]] = await Promise.all(ps);
 
   // let profileData;
   // if (profile) {
@@ -34,6 +34,7 @@ export default async function Home({}: Props) {
         </h2>
       </div>
       <ProfileHScroll
+        path="/person"
         title="People"
         description="Find awesome people in arts & entertainment, sports, politics, science, academia, and more."
         profiles={people}
