@@ -19,3 +19,21 @@ export const getFirebaseAdminApp = () => {
 };
 
 export const db = admin.firestore(getFirebaseAdminApp());
+
+export async function fetchEntities(tags: Array<string> = []) {
+  let query = db.collection("entity").where("oinks", ">", 0);
+
+  tags.forEach((tag) => {
+    query = query.where(`tagMap.${tag}`, "==", true);
+  });
+
+  const snapshotPeople = await query.orderBy("oinks", "desc").limit(8).get();
+
+  const people: Array<any> = [];
+
+  snapshotPeople.forEach((doc: any) =>
+    people.push({ id: doc.id, ...doc.data() })
+  );
+
+  return people;
+}

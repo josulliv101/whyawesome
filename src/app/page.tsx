@@ -1,6 +1,7 @@
 import { Page } from "@/components/Page";
+import { ProfileHScroll } from "@/components/ProfileHScroll";
 import { Albums } from "@/components/albums";
-import { db } from "@/lib/firebase";
+import { db, fetchEntities } from "@/lib/firebase";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -10,18 +11,14 @@ interface Props {
 }
 
 export default async function Home({}: Props) {
-  const refPeople = db
-    .collection("entity")
-    .where("tagMap.person", "==", true)
-    .orderBy("oinks", "desc")
-    .limit(8);
-  const snapshotPeople = await refPeople.get();
+  const ps = [
+    fetchEntities(["person"]),
+    fetchEntities(["movie"]),
+    fetchEntities(["sports"]),
+    fetchEntities(["restaurant"]),
+  ];
 
-  const people: Array<any> = [];
-
-  snapshotPeople.forEach((doc: any) =>
-    people.push({ id: doc.id, ...doc.data() })
-  );
+  const [people, movies, sports, restaurants] = await Promise.all(ps);
 
   // let profileData;
   // if (profile) {
@@ -33,21 +30,29 @@ export default async function Home({}: Props) {
     <div className="col-span-3 lg:col-span-4 lg:border-l">
       <div className="sm:px-0 md:px-12 pt-6">
         <h2 className="text-3xl font-semibold tracking-tight mb-8">
-          Explor the Awesome Jungle
+          Find out why things are awesome.
         </h2>
       </div>
-      <div className="px-0 md:px-12 py-6">
-        <div className="flex items-center justify-between">
-          <div className="space-y-1">
-            <h2 className="text-2xl font-semibold tracking-tight">People</h2>
-            <p className="text-sm text-muted-foreground">
-              Find awesome people in arts & entertainment, sports, politics,
-              science, academia, and more.
-            </p>
-          </div>
-        </div>
-        <Albums items={people} />
-      </div>
+      <ProfileHScroll
+        title="People"
+        description="Find awesome people in arts & entertainment, sports, politics, science, academia, and more."
+        profiles={people}
+      />
+      <ProfileHScroll
+        title="Sports"
+        description="Find awesome sports profiles."
+        profiles={sports}
+      />
+      <ProfileHScroll
+        title="Restaurants"
+        description="Find awesome restaurants."
+        profiles={restaurants}
+      />{" "}
+      <ProfileHScroll
+        title="Movies"
+        description="Find awesome movies."
+        profiles={movies}
+      />
     </div>
   );
 }
