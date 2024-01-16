@@ -23,7 +23,7 @@ export function SubTags({
         <Badge>all</Badge>
       </Link>
       {subTags.map(({ id, label }) => (
-        <Link href={`/${hub}/${tagsProp[0]}/${id}`}>
+        <Link key={id} href={`/${hub}/${tagsProp[0]}/${id}`}>
           <Badge>{label}</Badge>
         </Link>
       ))}

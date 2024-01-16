@@ -37,7 +37,7 @@ export const tags = {
     children: [
       { id: "museum", label: "Museum" },
       { id: "restaurant", label: "Restaurant" },
-      { id: "park", label: "Park" },
+      { id: "nature", label: "Nature" },
       { id: "local", label: "Locale" },
     ],
   },
