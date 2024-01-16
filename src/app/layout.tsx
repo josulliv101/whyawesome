@@ -30,7 +30,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Header />
-        <Hero />
+        {/* <Hero /> */}
         <div className="bg-background w-full">
           <div className={`grid lg:grid-cols-5 gap-8`}>
             <Sidebar hub={hub} className="hidden lg:block lg:col-span-1" />
@@ -40,6 +40,7 @@ export default function RootLayout({
             </div>
           </div>
         </div>{" "}
+        <div vaul-drawer-wrapper=""></div>
         {modal}
         <div id="modal-root" />
       </body>

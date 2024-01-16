@@ -28,5 +28,9 @@ export default async function ProfileModal({
     reasons,
   };
 
-  return <ProfileCard {...fullProfile} />;
+  return (
+    <div>
+      <ProfileCard {...fullProfile} />
+    </div>
+  );
 }

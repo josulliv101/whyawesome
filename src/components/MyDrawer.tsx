@@ -33,7 +33,9 @@ export function MyDrawer({
       open
       onOpenChange={handleClose}
       // onClose={handleClose}
-      shouldScaleBackground
+      shouldScaleBackground={false}
+      modal={true}
+      fixed={false}
     >
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 bg-black/40" />
