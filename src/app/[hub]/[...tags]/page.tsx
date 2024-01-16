@@ -57,12 +57,11 @@ export default async function Hub({
             />
             <div className="flex-1">
               <p className="text-lg font-medium leading-none mb-2">
-                {item.name} /{" "}
-                <span className="text-md text-blue-500">@{item.id}</span>
+                {item.name} / <span className="text-md ">@{item.id}</span>
               </p>
 
-              <p className="text-md text-muted-foreground">
-                #whyawesome{" "}
+              <p className="text-md text-muted-foreground border px-3 py-2">
+                <span className="text-blue-500">#whyawesome</span>{" "}
                 <Sparkle className="inline-block relative mr-1 left-[1px] text-brand h-[.85rem] w-[.85rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />{" "}
                 {item.description?.substring(0, 150)}
               </p>
