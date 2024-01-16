@@ -9,17 +9,16 @@ import { Sparkle } from "lucide-react";
 
 const navItems = [
   { path: "/about", label: "About" },
-  { path: "/profile/larry-bird", label: "Larry Bird" },
-  { path: "/boston", label: "Hub" },
-  { path: "/boston/tag001", label: "Hub + 1 tag" },
-  { path: "/boston/tag001/tag002", label: "Hub + 2 tags" },
+  { path: "/faq", label: "FAQ" },
+  { path: "/login", label: "Login" },
+  // { path: "/profile/larry-bird", label: "Larry Bird" },
 ];
 
 export const Header = memo(function HeaderComponent() {
   // const pathname = usePathname();
   return (
     <header className="fixed top-0 z-[10] w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/90">
-      <div className="container flex h-14 max-w-screen-3xl items-center justify-between">
+      <div className="pl-4 pr-12 flex h-14 max-w-screen-3xl items-center justify-between">
         <Link href="/" className="flex items-center">
           <div className="flex items-center justify-center w-8 h-8 rounded-sm bg-brand text-brand-foreground mr-4">
             <Sparkle />

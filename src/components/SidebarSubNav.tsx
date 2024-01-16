@@ -8,8 +8,8 @@ import { ChevronRight } from "lucide-react";
 
 const subNav = [
   { id: "person", label: "People" },
-  { id: "restaurant", label: "Restaurants" },
-  { id: "sports", label: "Sports" },
+  // { id: "restaurant", label: "Restaurants" },
+  { id: "place", label: "Places" },
   { id: "movie", label: "Movies" },
 ];
 

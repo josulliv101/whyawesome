@@ -13,12 +13,11 @@ interface Props {
 export default async function Home({}: Props) {
   const ps = [
     fetchEntities(["person"]),
+    fetchEntities(["place"]),
     fetchEntities(["movie"]),
-    fetchEntities(["sports"]),
-    fetchEntities(["restaurant"]),
   ];
 
-  const [[people], [movies], [sports], [restaurants]] = await Promise.all(ps);
+  const [[people], [places], [movies]] = await Promise.all(ps);
 
   // let profileData;
   // if (profile) {
@@ -35,20 +34,15 @@ export default async function Home({}: Props) {
         profiles={people}
       />
       <ProfileHScroll
-        title="Sports"
-        description="Find awesome sports profiles."
-        profiles={sports}
+        title="Places"
+        description="Find awesome places."
+        profiles={places}
       />
-      <ProfileHScroll
-        title="Restaurants"
-        description="Find awesome restaurants."
-        profiles={restaurants}
-      />{" "}
       <ProfileHScroll
         title="Movies"
         description="Find awesome movies."
         profiles={movies}
-      />
+      />{" "}
     </div>
   );
 }

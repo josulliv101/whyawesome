@@ -15,17 +15,16 @@ export default async function Hub({ params: { hub } }: Props) {
   const ps = [
     fetchEntities([hub, "person"]),
     fetchEntities([hub, "movie"]),
-    fetchEntities([hub, "sports"]),
-    fetchEntities([hub, "restaurant"]),
+    fetchEntities([hub, "place"]),
   ];
 
-  const [[people], [movies], [sports], [restaurants]] = await Promise.all(ps);
+  const [[people], [movies], [places]] = await Promise.all(ps);
 
   return (
     <div className="col-span-3 lg:col-span-4 lg:border-l">
       <div className="sm:px-0 md:px-12 pt-6">
         <h2 className="text-3xl font-semibold tracking-tight mb-8">
-          Find out why things in <Badge className="text-lg px-4">{hub}</Badge>{" "}
+          Find out why things in {hub}
           are awesome.
         </h2>
       </div>
@@ -36,20 +35,15 @@ export default async function Hub({ params: { hub } }: Props) {
         profiles={people}
       />
       <ProfileHScroll
-        path={`/${hub}/sports`}
-        title={`${hub} > sports`}
-        description="Find awesome sports profiles."
-        profiles={sports}
+        path={`/${hub}/place`}
+        title={`${hub} > places`}
+        description={`Find awesome places around ${hub}`}
+        profiles={places}
       />
       <ProfileHScroll
-        path={`/${hub}/restaurants`}
-        title={`${hub} > restaurants`}
-        description="Find awesome restaurants."
-        profiles={restaurants}
-      />{" "}
-      <ProfileHScroll
+        path={`/${hub}/movie`}
         title={`${hub} > movies`}
-        description="Find awesome movies."
+        description={`Find awesome movies around ${hub}`}
         profiles={movies}
       />
     </div>

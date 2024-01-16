@@ -56,7 +56,13 @@ export function AlbumArtwork({
           />
         </div>
         <div className="relative space-y-0 text-md pt-4">
-          <h3 className="text-lg font-medium leading-none mb-4">@{album.id}</h3>
+          <h3
+            className={`text-${
+              album.id.length > 30 ? "md" : "lg"
+            } font-medium leading-none mb-4`}
+          >
+            @{album.id}
+          </h3>
           <div className="relative text-md text-muted-foreground bg-muted px-3 pt-2 pb-2 h-[168px] overflow-hidden whitespace-normal">
             <div className="flex items-center justify-between font-medium mb-2">
               <div className="opacity-0">
