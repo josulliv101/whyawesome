@@ -6,7 +6,7 @@ import { Button } from "./ui/button";
 export function Hero() {
   const pathname = usePathname();
 
-  if (pathname === "/") {
+  if (true || pathname === "/") {
     return (
       <div className="w-full bg-hero min-h-[460px] bg-center bg-no-repeat bg-cover" />
     );

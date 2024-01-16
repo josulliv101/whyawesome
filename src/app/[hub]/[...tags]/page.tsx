@@ -32,6 +32,7 @@ export default async function Hub({
     Number(lastCursor),
     Boolean(prev)
   );
+  // await new Promise((r) => setTimeout(r, 2000));
   console.log("lastItem", prev, lastCursor);
   const totalPages = Math.ceil(count / PAGINATION_ITEMS_PER_PAGE);
   return (
