@@ -18,7 +18,7 @@ export function Modal({
   profile,
 }: {
   children?: React.ReactNode;
-  profile: Profile;
+  profile?: Profile;
 }) {
   const router = useRouter();
   const dialogRef = useRef<ElementRef<"dialog">>(null);
@@ -36,7 +36,9 @@ export function Modal({
   return createPortal(
     <Dialog defaultOpen modal onOpenChange={onDismiss}>
       <DialogTrigger>Open</DialogTrigger>
-      <DialogContent style={{ maxWidth: "960px" }}>{children}</DialogContent>
+      <DialogContent style={{ maxWidth: "960px", minHeight: "730px" }}>
+        {children}
+      </DialogContent>
     </Dialog>,
     document.getElementById("modal-root")!
   );

@@ -28,9 +28,5 @@ export default async function ProfileModal({
     reasons,
   };
 
-  return (
-    <ResponsiveModal profile={fullProfile}>
-      <ProfileCard {...fullProfile} />
-    </ResponsiveModal>
-  );
+  return <ProfileCard {...fullProfile} />;
 }

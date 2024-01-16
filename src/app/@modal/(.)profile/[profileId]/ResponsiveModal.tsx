@@ -10,16 +10,12 @@ export default function ResponsiveModal({
   children,
   profile,
 }: PropsWithChildren<{
-  profile: Profile;
+  profile?: Profile;
 }>) {
   const isDesktop = useMediaQuery("(min-width: 780px)");
 
   if (isDesktop) {
     return <Modal profile={profile}>{children}</Modal>;
   }
-  return (
-    <MyDrawer open profile={profile}>
-      {children}
-    </MyDrawer>
-  );
+  return <MyDrawer open>{children}</MyDrawer>;
 }

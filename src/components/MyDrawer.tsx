@@ -11,7 +11,11 @@ export function MyDrawer({
   open,
   profileId,
   profile,
-}: PropsWithChildren<{ open: boolean; profileId?: string; profile: Profile }>) {
+}: PropsWithChildren<{
+  open: boolean;
+  profileId?: string;
+  profile?: Profile;
+}>) {
   const router = useRouter();
   const path = usePathname();
   const handleClose = (open: boolean) => {
@@ -26,7 +30,7 @@ export function MyDrawer({
 
   return (
     <Drawer.Root
-      open={open}
+      open
       onOpenChange={handleClose}
       // onClose={handleClose}
       shouldScaleBackground
