@@ -14,9 +14,12 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { Badge } from "@/components/ui/badge";
+import { SubTags } from "@/components/SubTags";
+import { TagPrimary } from "@/types";
+import { Sparkle } from "lucide-react";
 
 interface Props {
-  params: { hub: string; tags: string[] };
+  params: { hub: string; tags: Array<TagPrimary> };
   searchParams: { lastCursor: number; prev: boolean };
 }
 
@@ -26,8 +29,9 @@ export default async function Hub({
   params: { hub, tags },
   searchParams: { lastCursor, prev = false },
 }: Props) {
+  const h = hub === "all" ? [] : [hub];
   const [items, count, lastItem, firstItem] = await fetchEntities(
-    [hub, ...tags],
+    [...h, ...tags],
     PAGINATION_ITEMS_PER_PAGE,
     Number(lastCursor),
     Boolean(prev)
@@ -37,7 +41,10 @@ export default async function Hub({
   const totalPages = Math.ceil(count / PAGINATION_ITEMS_PER_PAGE);
   return (
     <div className="col-span-3 lg:col-span-4 lg:border-l p-4">
-      HUB {hub} / {tags.join(" / ")} / total {count}
+      <div>
+        HUB {hub} / {tags.join(" / ")} / total {count}
+      </div>
+      <SubTags hub={hub} tags={tags} tagId={tags[0]} activeTag={tags[1]} />
       {items.map((item) => (
         <Link key={item.id} href={`/profile/${item.id}`} className="">
           <div className="flex items-start pl-0 pr-4 py-0 my-4 space-x-6 hover:bg-primary/5">
@@ -55,6 +62,8 @@ export default async function Hub({
               </p>
 
               <p className="text-md text-muted-foreground">
+                #whyawesome{" "}
+                <Sparkle className="inline-block relative mr-1 left-[1px] text-brand h-[.85rem] w-[.85rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />{" "}
                 {item.description?.substring(0, 150)}
               </p>
             </div>

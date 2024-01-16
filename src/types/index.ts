@@ -11,3 +11,5 @@ export interface Profile {
   reasons: Array<Reason>;
   oinks?: number;
 }
+
+export type TagPrimary = "person" | "place" | "movie";

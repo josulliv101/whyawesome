@@ -65,8 +65,8 @@ export function AlbumArtwork({
           </h3>
           <div className="relative text-md text-muted-foreground bg-muted px-3 pt-2 pb-2 h-[168px] overflow-hidden whitespace-normal">
             <div className="flex items-center justify-between font-medium mb-2">
-              <div className="opacity-0">
-                <em>top reason</em>
+              <div className="opacity-0__">
+                <>#whyawesome</>
               </div>
               <Badge className="absolute top-2 right-4 bg-brand">
                 {/* top reason{" "} */}

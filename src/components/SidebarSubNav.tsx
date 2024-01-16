@@ -18,7 +18,7 @@ const SubNavList = memo(function List({
   hub,
   activeHub,
 }: PropsWithChildren<{ firstTag?: string; activeHub: string; hub: string }>) {
-  console.log("SubNavList render() activeHub", activeHub);
+  console.log("SubNavList render() activeHub", firstTag, hub, activeHub);
   if (activeHub !== hub) {
     return null;
   }
@@ -43,14 +43,21 @@ const SubNavList = memo(function List({
 });
 
 export const SidebarSubNav = function SubNav({
-  hub,
+  hub = "all",
 }: PropsWithChildren<{ hub?: string }>) {
   const params = useParams();
   const firstTag = Array.isArray(params.tags) ? params.tags[0] : params.tags;
   console.log("SidebarSubNav render::params", params);
-  if (params.hub !== hub) {
-    return null;
+
+  if (params.hub !== "all" && params.hub !== hub) {
+    // return null;
   }
 
-  return <SubNavList activeHub={params.hub} hub={hub} firstTag={firstTag} />;
+  return (
+    <SubNavList
+      activeHub={(params.hub as string) || "all"}
+      hub={hub || "all"}
+      firstTag={firstTag}
+    />
+  );
 };

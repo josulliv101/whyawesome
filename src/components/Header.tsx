@@ -10,6 +10,7 @@ import { Sparkle } from "lucide-react";
 const navItems = [
   { path: "/about", label: "About" },
   { path: "/faq", label: "FAQ" },
+  { path: "/developer", label: "Developer API" },
   { path: "/login", label: "Login" },
   // { path: "/profile/larry-bird", label: "Larry Bird" },
 ];

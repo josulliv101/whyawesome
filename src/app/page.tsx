@@ -28,17 +28,19 @@ export default async function Home({}: Props) {
   return (
     <div className="col-span-3 lg:col-span-4 lg:border-l">
       <ProfileHScroll
-        path="/person"
+        path="/all/person"
         title="People"
         description="Find awesome people in arts & entertainment, sports, politics, science, academia, and more."
         profiles={people}
       />
       <ProfileHScroll
+        path="/all/place"
         title="Places"
         description="Find awesome places."
         profiles={places}
       />
       <ProfileHScroll
+        path="/all/movie"
         title="Movies"
         description="Find awesome movies."
         profiles={movies}
